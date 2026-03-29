@@ -1,10 +1,11 @@
 import { Token } from "@uniswap/sdk-core";
 import type { Pool } from "@uniswap/v3-sdk";
 import JSBI from "jsbi";
-import { calculateProfit, findTightBounds, performDerivativeBinarySearch } from "./algos/binary";
+import { calculateProfit, performDerivativeBinarySearch } from "./algos/binary";
 import { runGoldenSectionSearch } from "./algos/gss";
 import { hydratePool } from "./utils/hydrate";
 import { formatEther } from "@ethersproject/units";
+import { findTightBounds } from "./algos/bounds";
 
 export async function runBenchmark(buyPool: Pool, sellPool: Pool, WETH: Token) {
     const BN_10 = JSBI.BigInt(10),
