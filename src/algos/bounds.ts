@@ -21,7 +21,7 @@ function mul(x: number) {
 
 const iterableVolumes: JSBI[] = [div(200), div(100), div(40), div(20), div(10), div(4), div(2), ETHER, mul(2), mul(5), mul(10), mul(20), mul(50), mul(100)]
 
-export async function findTightBounds(buyPool: Pool, sellPool: Pool, WETH: Token): Promise<{ left: JSBI, right: JSBI }> {
+export async function findTightBounds(buyPool: Pool, sellPool: Pool, WETH: Token): Promise<{ left: JSBI, right: JSBI, bestVolume: JSBI, bestProfit: JSBI }> {
     let bestProfit = ZERO,
         optimalIndex = 0;
 
@@ -36,6 +36,7 @@ export async function findTightBounds(buyPool: Pool, sellPool: Pool, WETH: Token
     }
 
     if (JSBI.equal(bestProfit, ZERO)) {
+        // In production you would want to return null not throw, since no arb is a normal condition not an exceptional one
         throw new Error("No profitable arbitrage found in coarse sweep.");
     }
 
@@ -43,5 +44,10 @@ export async function findTightBounds(buyPool: Pool, sellPool: Pool, WETH: Token
     const leftBound = optimalIndex > 0 ? iterableVolumes[optimalIndex - 1] : ZERO,
         rightBound = optimalIndex < iterableVolumes.length - 1 ? iterableVolumes[optimalIndex + 1] : JSBI.multiply(iterableVolumes[optimalIndex], TWO);
 
-    return { left: leftBound, right: rightBound };
+    return {
+        left: leftBound,
+        right: rightBound,
+        bestVolume: iterableVolumes[optimalIndex],
+        bestProfit
+    };
 }

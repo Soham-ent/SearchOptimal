@@ -37,7 +37,9 @@ export function hydratePool(poolAddress: string, tokenA: Token, tokenB: Token, f
         }
     }
 
-    // Convert negative dip to a positive injection
+    /**
+     * Negating the minimum running sum to create a valid initialLiquidity injection is non-obvious.
+     */
     const initialLiquidity = JSBI.multiply(minRunning, JSBI.BigInt(-1));
 
     // Inject massive dummy liquidity at the absolute MIN_TICK

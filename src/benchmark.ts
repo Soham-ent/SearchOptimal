@@ -11,16 +11,12 @@ export async function runBenchmark(buyPool: Pool, sellPool: Pool, WETH: Token) {
     const BN_10 = JSBI.BigInt(10),
         TOLERANCE = JSBI.exponentiate(BN_10, JSBI.BigInt(15)); // 0.001 ETH precision
 
-    console.log("Stage 1: Running Coarse Heuristic Bracketing...");
     const sweepStart = performance.now(),
         bounds = await findTightBounds(buyPool, sellPool, WETH),
         sweepEnd = performance.now();
 
     const leftBound = bounds.left,
         rightBound = bounds.right;
-    console.log(`Bounds Found: [${formatEther(leftBound.toString())} ETH, ${formatEther(rightBound.toString())} ETH] in ${(sweepEnd - sweepStart).toFixed(4)} ms`);
-
-    console.log("Stage 2: Benchmarking Precision Algorithms on Tight Bounds...");
 
     // Run Binary
     const startBinary = performance.now(),
@@ -38,17 +34,25 @@ export async function runBenchmark(buyPool: Pool, sellPool: Pool, WETH: Token) {
         gssProfit = await calculateProfit(buyPool, sellPool, gssResult.volume, WETH);
 
     console.log(`
+    =========================================
+    STAGE 1: COARSE HEURISTIC BRACKETING
+    Best Bucket Evaluated : ${formatEther(bounds.bestVolume.toString())} WETH
+    Bucket Profit         : ${formatEther(bounds.bestProfit.toString())} WETH
+    Bounds Found          : [${formatEther(leftBound.toString())} WETH, ${formatEther(rightBound.toString())} WETH]
+    Execution Time        : ${(sweepEnd - sweepStart).toFixed(2)} ms
+
+    STAGE 2: PRECISION BENCHMARK
     --- DERIVATIVE BINARY SEARCH ---
     Optimal Volume : ${formatEther(binaryVolume.toString())} WETH
     Max Profit     : ${formatEther(binaryProfit.toString())} WETH
     Iterations     : ${binaryResult.iterations}
-    Execution Time : ${(endBinary - startBinary).toString()} ms
+    Execution Time : ${(endBinary - startBinary).toFixed(2)} ms
 
     --- GOLDEN SECTION SEARCH ---
     Optimal Volume : ${formatEther(gssVolume.toString())} WETH
     Max Profit     : ${formatEther(gssProfit.toString())} WETH
     Iterations     : ${gssResult.evaluations}
-    Execution Time : ${(endGSS - startGSS).toString()} ms
+    Execution Time : ${(endGSS - startGSS).toFixed(2)} ms
     `);
 }
 

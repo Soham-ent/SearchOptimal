@@ -4,6 +4,10 @@ import type { Pool } from "@uniswap/v3-sdk";
 
 // 1. Pure JSBI Constants
 const BN_10 = JSBI.BigInt(10),
+    /**
+     * For large inputs (50+ ETH) this delta is proportionally tiny and may cause floating point approximation issues 
+     * in the slope calculation. Dynamic delta = volume * 0.0001 would be more robust. 
+     */
     DELTA = JSBI.exponentiate(BN_10, JSBI.BigInt(14)), // 0.0001 ETH delta for slope calculation
     // Helper 
     TWO = JSBI.BigInt(2);
