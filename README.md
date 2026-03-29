@@ -2,7 +2,7 @@
 
 This repository contains the pure TypeScript benchmarking engine used to evaluate continuous optimization algorithms (Golden Section Search vs. Derivative Binary Search) for finding the exact `amountIn` maxima on Uniswap V3 profit curves.
 
-**Read the full mathematical teardown and latency analysis on Substack:** [Link to your Substack Post 3 here]
+**Read the full mathematical teardown and latency analysis on Substack:** [here](https://sohammalve.substack.com/p/coarse-to-precise-a-2-phase-search)
 
 ## Architecture Overview
 To accurately measure algorithmic CPU latency without JSON-RPC I/O contamination, this engine decouples state-fetching from routing math. 
