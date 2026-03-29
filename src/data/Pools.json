@@ -1,0 +1,54 @@
+[
+    {
+        "_tokens": [
+            "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+        ],
+        "_marketAddress": "0xE0554a476A092703abdB3Ef35c80e0D76d32939F",
+        "_factory": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+        "_router": "0xE592427A0AEce92De3Edee1F18E0157C05861564",
+        "_feeTier": 100,
+        "_exchange": "uniV3",
+        "_type": "v3",
+        "_decimals": {},
+        "_tickSpacing": 1,
+        "_state": {
+            "_sqrtPriceX96": {
+                "type": "BigNumber",
+                "hex": "0x00"
+            },
+            "_tick": "",
+            "_liquidity": {
+                "type": "BigNumber",
+                "hex": "0x00"
+            }
+        },
+        "tick_data": {}
+    },
+    {
+        "_tokens": [
+            "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+        ],
+        "_marketAddress": "0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+        "_factory": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+        "_router": "0xE592427A0AEce92De3Edee1F18E0157C05861564",
+        "_feeTier": 500,
+        "_exchange": "uniV3",
+        "_type": "v3",
+        "_decimals": {},
+        "_tickSpacing": 10,
+        "_state": {
+            "_sqrtPriceX96": {
+                "type": "BigNumber",
+                "hex": "0x00"
+            },
+            "_tick": "",
+            "_liquidity": {
+                "type": "BigNumber",
+                "hex": "0x00"
+            }
+        },
+        "tick_data": {}
+    }
+]

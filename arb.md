@@ -1,0 +1,15 @@
+    
+    Optimal input amount: 36324981671564103568
+    Base profit: 506561764363282211
+    Flash loan fee: 18162490835782051
+    Profit minus flash loan fee: 488399273527500160 
+    Validator tip: 0
+    Net profit: 488399273527500160
+    BlockNumber: 23997631
+First swap Arb token to swap token
+uniV3 (0xE0554a476A092703abdB3Ef35c80e0D76d32939F)
+0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 => 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
+Than swap token to arb token back
+uniV3 (0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640)
+0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 => 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+
